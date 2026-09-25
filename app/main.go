@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-	// TODO: Uncomment the code below to pass the first stage
 	fmt.Print("$ ")
 	command, _ := bufio.NewReader(os.Stdin).ReadString('\n')
 	if command != "" {
