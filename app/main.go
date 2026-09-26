@@ -18,10 +18,15 @@ func main() {
 
 		}
 
-		command = command[:len(command)-1]
+		command = strings.TrimSpace(command[:len(command)-1])
 
 		if strings.TrimSpace(command) == "exit" {
 			os.Exit(0)
+		}
+
+		if strings.HasPrefix(command, "echo ") {
+			fmt.Println(command[5:])
+			continue
 		}
 
 		if command != "" {
