@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"os/exec"
 	"slices"
 	"strings"
 )
@@ -37,7 +38,16 @@ func main() {
 				continue
 			}
 
-			fmt.Printf("%s: not found\n", command[5:])
+			// search for command in PATH
+			fileName := strings.TrimSpace(command[5:])
+
+			path, err := exec.LookPath(fileName)
+			if err != nil {
+				fmt.Printf("%s: not found\n", fileName)
+				continue
+			}
+
+			fmt.Printf("%s is %s\n", fileName, path)
 			continue
 		}
 
